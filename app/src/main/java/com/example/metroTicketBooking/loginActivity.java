@@ -100,13 +100,13 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        /*forget.setOnClickListener(new View.OnClickListener() {
+        forget.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, forgetPassword.class);
+                Intent intent = new Intent(getApplicationContext(), forgetPasswordActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         googleimage.setOnClickListener(view -> signin());
 

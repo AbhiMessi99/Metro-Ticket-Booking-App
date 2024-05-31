@@ -94,33 +94,34 @@ public class changePasswordFragment extends Fragment {
                 currPass = currentPassword.getText().toString();
                 newPass = newPassword.getText().toString();
                 reNewPass = reNewPassword.getText().toString();
-                if(currUserPassword.equals(currPass)){
-                    if(newPass.equals(reNewPass)) {
-                        if(currPass.equals(newPass))
-                        {
-                            Toast.makeText(getActivity(), "Current and new password cannot be same", Toast.LENGTH_LONG).show();
-                        }
-                        else {
-                            int updates = DB.updatePassword(newPass, currUser);
-                            if (updates > 0) {
-                                Toast.makeText(getActivity(), "Password changed Successfully", Toast.LENGTH_LONG).show();
-                                myProfileFragment destFragment = new myProfileFragment();
-                                FragmentManager fgm = getFragmentManager();
-                                sessionManager.updatePassword(newPass);
-                                fgm.beginTransaction()
-                                        .replace(R.id.linearLayout9, destFragment) // Replace fragment_container with the ID of the container in your activity layout
-                                        .addToBackStack(null) // Optional: Add the transaction to the back stack
-                                        .commitAllowingStateLoss();
+                if(newPass.length()>=8) {
+                    if (currUserPassword.equals(currPass)) {
+                        if (newPass.equals(reNewPass)) {
+                            if (currPass.equals(newPass)) {
+                                Toast.makeText(getActivity(), "Current and new password cannot be same", Toast.LENGTH_LONG).show();
                             } else {
-                                Toast.makeText(getActivity(), "Password not changed Try Again", Toast.LENGTH_LONG).show();
+                                int updates = DB.updatePassword(newPass, currUser);
+                                if (updates > 0) {
+                                    Toast.makeText(getActivity(), "Password changed Successfully", Toast.LENGTH_LONG).show();
+                                    myProfileFragment destFragment = new myProfileFragment();
+                                    FragmentManager fgm = getFragmentManager();
+                                    sessionManager.updatePassword(newPass);
+                                    fgm.beginTransaction()
+                                            .replace(R.id.linearLayout9, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                                            .addToBackStack(null) // Optional: Add the transaction to the back stack
+                                            .commitAllowingStateLoss();
+                                } else {
+                                    Toast.makeText(getActivity(), "Password not changed Try Again", Toast.LENGTH_LONG).show();
+                                }
                             }
+                        } else {
+                            Toast.makeText(getActivity(), "New password not matched with re-entered password", Toast.LENGTH_LONG).show();
                         }
-                    }
-                    else{
-                        Toast.makeText(getActivity(), "New password not matched with re-entered password", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getActivity(), "Current Password is wrong", Toast.LENGTH_LONG).show();
                     }
                 }else{
-                    Toast.makeText(getActivity(), "Current Password is wrong", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Password must be of minimum 8 characters", Toast.LENGTH_SHORT).show();
                 }
             }
         });

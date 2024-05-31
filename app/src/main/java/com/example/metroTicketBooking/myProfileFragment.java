@@ -156,7 +156,7 @@ public class myProfileFragment extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
                 alert.setTitle("Account Deletion");
-                alert.setMessage("Are You Sure.");
+                alert.setMessage("All actives details and tickets will also be deleted. Are You Sure.");
                 alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {

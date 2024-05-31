@@ -17,11 +17,14 @@
         android:theme="@style/Theme.Tig_farm"
         tools:targetApi="31">
         <activity
+            android:name=".forgetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".transactionsActivity"
             android:exported="false" />
         <activity
             android:name=".phoneLogin"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />

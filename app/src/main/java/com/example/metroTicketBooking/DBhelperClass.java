@@ -141,4 +141,11 @@ public class DBhelperClass extends SQLiteOpenHelper {
         db.close();
         return userDetails;
     }
+    public int forgetPassword(String password, String mobemail){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues cv  = new ContentValues();
+        cv.put(COL_Password, password);
+        int result = MyDB.update(Table_Name, cv, COL_Mobile+ " =? or "+COL_Email+ "=?",new String[]{mobemail, mobemail});
+        return result;
+    }
 }
