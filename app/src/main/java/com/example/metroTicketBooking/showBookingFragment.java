@@ -1,16 +1,23 @@
 package com.example.metroTicketBooking;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import java.util.*;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +25,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +55,7 @@ public class showBookingFragment extends Fragment {
     private ListView listView;
     private listAdapter adapter;
     private List<TicketDetails> dataList;
-
+    ImageView qrcode;
     private ProgressBar bar;
     private DatabaseReference databaseReference;
 
@@ -118,6 +130,49 @@ public class showBookingFragment extends Fragment {
         });
         // Set adapter to ListView
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TicketDetails ticket = dataList.get(position);
+                showPopupWindow(view, ticket);
+            }
+        });
         return view;
+    }
+
+    private void showPopupWindow(View anchorView, TicketDetails ticket) {
+        // Inflate the custom layout/view
+        View popupView = LayoutInflater.from(getContext()).inflate(R.layout.ticket_popup, null);
+        qrcode = popupView.findViewById(R.id.imageViewQrCode);
+        // Initialize a new instance of popup window
+        PopupWindow popupWindow = new PopupWindow(popupView,
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        // Set the details in the popup
+        String Source = ticket.getSource();
+        String Destination = ticket.getDestination();
+        String Fare = ticket.getFare();
+        String qrText = Source+ " -> "
+                + Destination
+                + " fare: Rs " + Fare;
+        // Show the popup window
+        generateQRCode(qrText, qrcode);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.showAtLocation(anchorView.getRootView(), Gravity.CENTER, 0, 0);
+    }
+
+    private void generateQRCode(String text, ImageView imageView) {
+        MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
+        try {
+            BitMatrix bitMatrix = multiFormatWriter.encode(text, BarcodeFormat.QR_CODE, 300, 300);
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.createBitmap(bitMatrix);
+            qrcode.setImageBitmap(bitmap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+            Toast.makeText(getActivity(), "QR Code generation failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 }

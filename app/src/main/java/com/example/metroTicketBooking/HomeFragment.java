@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 /**
@@ -89,7 +90,6 @@ public class HomeFragment extends Fragment {
         sessionManager = new SessionManager(getContext());
         HashMap<String, String> userDetail= sessionManager.getUserDetail();
         currUser = userDetail.get(sessionManager.KEY_USER);
-
         databaseReference = FirebaseDatabase.getInstance().getReference().child("MetroUsers").child(currUser).child("Tickets");
         bookticket = view.findViewById(R.id.imageViewBookticket);
         routes = view.findViewById(R.id.imageViewRoutes);
@@ -97,14 +97,20 @@ public class HomeFragment extends Fragment {
         bookticket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bookingFragment destFragment = new bookingFragment();
+                Calendar calendar = Calendar.getInstance();
+                int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                if (currentHour >= 6 && currentHour < 21) {
+                    bookingFragment destFragment = new bookingFragment();
 
-                // Replace the current fragment with Fragment2
-                FragmentManager fgm = getFragmentManager();
-                fgm.beginTransaction()
-                        .replace(R.id.choiceLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
-                        .addToBackStack(null) // Optional: Add the transaction to the back stack
-                        .commitAllowingStateLoss();
+                    // Replace the current fragment with Fragment2
+                    FragmentManager fgm = getFragmentManager();
+                    fgm.beginTransaction()
+                            .replace(R.id.choiceLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                            .addToBackStack(null) // Optional: Add the transaction to the back stack
+                            .commitAllowingStateLoss();
+                }else{
+                    Toast.makeText(getContext(), "Services available between 6 AM and 9 PM only", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
