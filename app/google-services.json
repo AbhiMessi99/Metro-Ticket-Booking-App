@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "542492161344",
+    "project_id": "metroapp-3db22",
+    "storage_bucket": "metroapp-3db22.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542492161344:android:6a7fa39431237e308b76a5",
+        "android_client_info": {
+          "package_name": "com.example.metroTicketBooking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi1qMdSrw1zoZsRkj7L3t0C_1N6NPvFGs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

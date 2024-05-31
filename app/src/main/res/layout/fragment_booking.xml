@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/appbackground"
+    android:backgroundTint="@color/alice_blue"
+    android:backgroundTintMode="multiply"
+    tools:context=".booking">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPassengers"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Passengers"
+        app:endIconMode="dropdown_menu"
+        app:endIconScaleType="centerInside"
+        app:expandedHintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputJourneyDetails"
+        app:startIconCheckable="false"
+        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconScaleType="centerInside"
+        app:startIconTint="@android:color/holo_red_light"
+        app:startIconTintMode="src_in">>
+
+        <AutoCompleteTextView
+            android:id="@+id/passengersDropDown"
+            android:layout_width="393dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/aquamarine"
+            android:backgroundTintMode="src_over"
+            android:dropDownHeight="wrap_content"
+            android:hint="Number of Passenger"
+            android:inputType="none"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#D32F2F"
+            android:textColorHint="#00796B"
+            android:textDirection="anyRtl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:dropDownBackgroundTint="@color/_light_green" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayeroutDestination"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="412dp"
+        android:hint="Select Route"
+        app:endIconMode="dropdown_menu"
+        app:endIconScaleType="centerInside"
+        app:expandedHintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutSource"
+        app:layout_constraintVertical_bias="0.0"
+        app:startIconCheckable="false"
+        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconScaleType="centerInside"
+        app:startIconTint="@android:color/holo_red_light"
+        app:startIconTintMode="src_in">>
+
+        <AutoCompleteTextView
+            android:id="@+id/destinationDropDown"
+            android:layout_width="393dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/aquamarine"
+            android:backgroundTintMode="src_over"
+            android:dropDownHeight="wrap_content"
+            android:hint="Choose Destination"
+            android:inputType="none"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#D32F2F"
+            android:textColorHint="#00796B"
+            android:textDirection="anyRtl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:dropDownBackgroundTint="@color/dark_gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayeroutRoute"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Select Route"
+        app:endIconMode="dropdown_menu"
+        app:endIconScaleType="centerInside"
+        app:expandedHintEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083"
+        app:startIconCheckable="false"
+        app:startIconDrawable="@drawable/baseline_edit_location_alt_24"
+        app:startIconScaleType="centerInside"
+        app:startIconTint="@color/blue"
+        app:startIconTintMode="src_in">
+
+        <AutoCompleteTextView
+            android:id="@+id/routeDropDown"
+            android:layout_width="393dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/beige"
+            android:backgroundTintMode="src_over"
+            android:dropDownHeight="wrap_content"
+            android:hint="Choose Journey Route"
+            android:inputType="none"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#D32F2F"
+            android:textColorHint="#00796B"
+            android:textDirection="anyRtl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:dropDownBackgroundTint="@color/dark_gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayeroutSource"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="From"
+        app:endIconMode="dropdown_menu"
+        app:endIconScaleType="centerInside"
+        app:expandedHintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:hintEnabled="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutRoute"
+        app:layout_constraintVertical_bias="0.021"
+        app:startIconCheckable="false"
+        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconScaleType="centerInside"
+        app:startIconTint="@color/forest_green"
+        app:startIconTintMode="src_in">
+
+        <AutoCompleteTextView
+            android:id="@+id/sourceDropDown"
+            android:layout_width="393dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/aquamarine"
+            android:backgroundTintMode="src_over"
+            android:dropDownHeight="wrap_content"
+            android:hint="Choose Source"
+            android:inputType="none"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#D32F2F"
+            android:textColorHint="#00796B"
+            android:textDirection="anyRtl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:dropDownBackgroundTint="@color/dark_gray" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputJourneyDetails"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:hint="Type of Journey"
+        app:endIconMode="dropdown_menu"
+        app:endIconScaleType="centerInside"
+        app:expandedHintEnabled="false"
+        app:hintAnimationEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutDestination"
+        app:startIconCheckable="false"
+        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconScaleType="centerInside"
+        app:startIconTint="@android:color/holo_red_light"
+        app:startIconTintMode="src_in">>
+
+        <AutoCompleteTextView
+            android:id="@+id/JourneyTypeDropdown"
+            android:layout_width="393dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/beige"
+            android:backgroundTintMode="src_over"
+            android:dropDownHeight="wrap_content"
+            android:hint="Journey Type"
+            android:inputType="none"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="#D32F2F"
+            android:textColorHint="#00796B"
+            android:textDirection="anyRtl"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:dropDownBackgroundTint="@color/dark_gray" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonProceed"
+        android:layout_width="378dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#009688"
+        android:drawableLeft="@drawable/baseline_ads_click_24"
+
+        android:paddingRight="55dp"
+        android:text="Proceed"
+        android:textColor="#CDDC39"
+        android:textSize="20sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintBottom_toTopOf="@+id/buttonProceed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutDestination"
+        app:layout_constraintVertical_bias="0.38">
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="198dp"
+            android:layout_height="match_parent"
+            android:drawableLeft="@drawable/baseline_access_time_24"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Time of Booking"
+            android:textAlignment="center"
+            android:textColor="#388E3C"
+            android:textDirection="firstStrong"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeOftravel"
+            android:layout_width="159dp"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/alatsi"
+            android:text="Time of Travel"
+            android:textAlignment="center"
+            android:textColor="#2FD3B2"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="233dp"
+        android:layout_height="169dp"
+        android:src="@drawable/logo"
+        app:layout_constraintBottom_toTopOf="@+id/buttonProceed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.404" />
+
+    <TextView
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:autoText="false"
+        android:drawableStart="@drawable/baseline_change_circle_24"
+        android:drawablePadding="10sp"
+        android:fontFamily="@font/alatsi"
+        android:shadowColor="#00796B"
+        android:text="Reset Details"
+        android:textAlignment="textStart"
+        android:textDirection="firstStrongRtl"
+        android:textSize="16sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayeroutRoute"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432" />
+
+    <ImageView
+        android:id="@+id/imageViewBookBack"
+        android:layout_width="24dp"
+        android:layout_height="29dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayeroutRoute"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.937"
+        app:layout_constraintStart_toEndOf="@+id/reset"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.444" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

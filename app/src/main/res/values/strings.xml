@@ -1,0 +1,19 @@
+<resources>
+    <string name="default_web_client_id">542492161344-sdero1a55gg4fqr565erjdliu6am600a.apps.googleusercontent.com</string>
+    <string name="app_name">Kolkata Metro</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <string name="logout">Logout</string>
+    <string name="home">Farming</string>
+    <string name="settings">Sustainability approaches</string>
+    <string name="share">Course</string>
+    <string name="about_us">Subsidy</string>
+    <string name="farm_us">Farming types</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Home</string>
+    <string name="shorts_blank_fragment">Shorts</string>
+    <string name="subscriptions_blank_fragment">Subscriptions</string>
+    <string name="library_blank_fragment">Library</string>
+
+</resources>

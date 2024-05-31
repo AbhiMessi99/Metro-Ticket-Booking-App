@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/appbackground"
+    android:backgroundTint="@color/alice_blue"
+    android:backgroundTintMode="multiply"
+    tools:context=".razorpayActivity">
+
+    <ImageView
+        android:id="@+id/imageViewRazHome"
+        android:layout_width="30dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewReviewJourney"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.041"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/home" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="Warning: Tickets will available for 8 hours from Booking time "
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="@color/fire_brick"
+        android:textSize="14sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewRazorpay"
+        app:layout_constraintVertical_bias="0.875" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewReviewJourney"
+        android:layout_width="331dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/lavender_blush"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.39">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRoute"
+                app:layout_constraintVertical_bias="0.19999999">
+
+                <TextView
+                    android:id="@+id/timeOfBooking"
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/baseline_access_time_24"
+                    android:ellipsize="start"
+                    android:fontFamily="@font/alatsi"
+                    android:text="Booked At"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_cyan"
+                    android:textDirection="firstStrong"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textViewTimeOftravel"
+                    android:layout_width="157dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alatsi"
+                    android:text="Time of Travel"
+                    android:textAlignment="center"
+                    android:textColor="#2FD3B2"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="325dp"
+                android:layout_height="30dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.060000002"
+                tools:layout_editor_absoluteX="2dp">
+
+                <TextView
+                    android:id="@+id/textViewJType"
+                    android:layout_width="183dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/arbutus"
+                    android:text="Single Journey"
+                    android:textAlignment="center"
+                    android:textColor="#D32F2F"
+                    android:textSize="20sp"
+                    app:autoSizeTextType="none" />
+
+                <TextView
+                    android:id="@+id/textViewMoney"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/arbutus"
+                    android:text="rs 20"
+                    android:textAlignment="center"
+                    android:textColor="@color/btncolor"
+                    android:textSize="24sp"
+                    app:autoSizeTextType="uniform" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+                app:layout_constraintVertical_bias="0.07999998">
+
+                <TextView
+                    android:id="@+id/textViewSource"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alatsi"
+                    android:text="Salt Lake Sector 5"
+                    android:textAlignment="center"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:src="@drawable/arrowdown" />
+
+                <TextView
+                    android:id="@+id/textViewDestination"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alatsi"
+                    android:text="Sealdah"
+                    android:textAlignment="center"
+                    android:textColor="@color/indian_red"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/alatsi"
+                android:text="route"
+                android:textAlignment="center"
+                android:textColor="@color/dark_cyan"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+                app:layout_constraintVertical_bias="0.103" />
+
+            <TextView
+                android:id="@+id/textViewPassenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawableStart="@drawable/traveler"
+                android:fontFamily="@font/arbutus"
+                android:text="10"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <LinearLayout
+                android:layout_width="329dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="14dp"
+                android:background="#0B0A0A"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/black"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRoute"
+                app:layout_constraintVertical_bias="0.68"></LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imageViewRazorpay"
+        android:layout_width="283dp"
+        android:layout_height="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewReviewJourney"
+        app:layout_constraintVertical_bias="0.178"
+        app:srcCompat="@drawable/razorpay" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="123dp"
+        android:layout_height="103dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardViewReviewJourney"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/paymentmethod" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
