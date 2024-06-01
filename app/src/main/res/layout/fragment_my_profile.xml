@@ -374,13 +374,13 @@
 
         <ImageView
             android:id="@+id/imageViewDeleteAccount"
-            android:layout_width="40dp"
-            android:layout_height="48dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="192dp"
             android:backgroundTint="@color/beige"
             android:src="@drawable/deleteaccount"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.578"

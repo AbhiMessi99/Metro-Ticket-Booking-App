@@ -4,10 +4,12 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -39,6 +41,7 @@ public class transactionFragment extends Fragment {
     private String mParam2;
     SessionManager sessionManager;
     String currUser;
+    ImageView back;
     private ListView listView;
     private transactionAdapter adapter;
     private List<PaymentDetails> dataList;
@@ -83,6 +86,7 @@ public class transactionFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_transaction, container, false);
+        back = view.findViewById(R.id.imageViewRoutesBack);
         sessionManager = new SessionManager(getContext());
         HashMap<String, String> userDetail= sessionManager.getUserDetail();
         currUser = userDetail.get(sessionManager.KEY_USER);
@@ -120,6 +124,17 @@ public class transactionFragment extends Fragment {
         });
         // Set adapter to ListView
         listView.setAdapter(adapter);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeFragment destFragment = new HomeFragment();
+                FragmentManager fgm = getFragmentManager();
+                fgm.beginTransaction()
+                        .replace(R.id.main, destFragment)
+                        .commit();
+            }
+        });
         return view;
     }
 }

@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 import java.util.*;
 
 import android.view.Gravity;
@@ -51,7 +53,7 @@ public class showBookingFragment extends Fragment {
     private String mParam2;
     SessionManager sessionManager;
     String currUser;
-
+    ImageView back;
     private ListView listView;
     private listAdapter adapter;
     private List<TicketDetails> dataList;
@@ -96,6 +98,7 @@ public class showBookingFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_show_booking, container, false);
         sessionManager = new SessionManager(getContext());
+        back = view.findViewById(R.id.imageViewRoutesBack);
         HashMap<String, String> userDetail= sessionManager.getUserDetail();
         currUser = userDetail.get(sessionManager.KEY_USER);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("MetroUsers").child(currUser).child("Tickets");
@@ -136,6 +139,17 @@ public class showBookingFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TicketDetails ticket = dataList.get(position);
                 showPopupWindow(view, ticket);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HomeFragment destFragment = new HomeFragment();
+                FragmentManager fgm = getFragmentManager();
+                fgm.beginTransaction()
+                        .replace(R.id.main, destFragment)
+                        .commit();
             }
         });
         return view;

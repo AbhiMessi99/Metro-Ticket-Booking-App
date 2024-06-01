@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,6 +44,7 @@ public class phoneLogin extends AppCompatActivity {
     private String phoneNumber;
     private long timeOut = 60L;
     private FirebaseAuth mAuth;
+    ProgressBar progressBar;
     Intent intent;
     String user, pass, emailid, num, gender, dob;
     DBhelperClass DB;
@@ -58,9 +60,9 @@ public class phoneLogin extends AppCompatActivity {
         signInBtn = findViewById(R.id.verifyButton);
         otpInput = findViewById(R.id.editTextOtp);
         intent = getIntent();
+        progressBar = findViewById(R.id.progressBarOtp);
         phoneNumber = intent.getStringExtra("number");
         sendOtp(phoneNumber, false);
-
         user = intent.getStringExtra("username");
         pass = intent.getStringExtra("password");
         emailid = intent.getStringExtra("emailid");
@@ -98,6 +100,7 @@ public class phoneLogin extends AppCompatActivity {
 
     private void sendOtp(String phoneNumber, boolean isResend) {
         startResendTimer();
+        setInProgress(true);
         PhoneAuthOptions.Builder builder = PhoneAuthOptions.newBuilder(mAuth)
                 .setPhoneNumber(phoneNumber)
                 .setTimeout(timeOut, TimeUnit.SECONDS)
@@ -106,11 +109,13 @@ public class phoneLogin extends AppCompatActivity {
                     @Override
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
                         signIn(phoneAuthCredential);
+                        setInProgress(false);
                     }
 
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
                         Log.e(TAG, "Verification Failed", e);
+                        setInProgress(false);
                         Toast.makeText(phoneLogin.this, "Verification Failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     }
 
@@ -119,6 +124,7 @@ public class phoneLogin extends AppCompatActivity {
                         super.onCodeSent(s, forceResendingToken);
                         verificationCode = s;
                         resendingToken = forceResendingToken;
+                        setInProgress(false);
                         Toast.makeText(phoneLogin.this, "OTP sent successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -154,10 +160,19 @@ public class phoneLogin extends AppCompatActivity {
         });
     }
 
+    void setInProgress(boolean inProgress){
+        if(inProgress){
+            progressBar.setVisibility(View.VISIBLE);
+            signInBtn.setEnabled(false);
+        }else{
+            progressBar.setVisibility(View.GONE);
+            signInBtn.setEnabled(true);
+        }
+    }
     void startResendTimer() {
         resendOtpTextView.setEnabled(false);
         Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new TimerTask() {
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 timeOut--;

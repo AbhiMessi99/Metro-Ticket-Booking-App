@@ -117,7 +117,12 @@ public class HomeFragment extends Fragment {
         routes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                routesFragment destFragment = new routesFragment();
+                FragmentManager fgm = getFragmentManager();
+                fgm.beginTransaction()
+                        .replace(R.id.choiceLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                        .addToBackStack(null) // Optional: Add the transaction to the back stack
+                        .commitAllowingStateLoss();
             }
         });
 
