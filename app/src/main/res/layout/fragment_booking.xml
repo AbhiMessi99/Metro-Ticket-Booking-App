@@ -25,9 +25,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputJourneyDetails"
         app:startIconCheckable="false"
-        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconDrawable="@drawable/baseline_directions_run_24"
         app:startIconScaleType="centerInside"
-        app:startIconTint="@android:color/holo_red_light"
+        app:startIconTint="@color/blue"
         app:startIconTintMode="src_in">>
 
         <AutoCompleteTextView
@@ -47,7 +47,7 @@
             android:textDirection="anyRtl"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:dropDownBackgroundTint="@color/_light_green" />
+            app:dropDownBackgroundTint="@color/floral_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutSource"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutSchSource"
         app:layout_constraintVertical_bias="0.0"
         app:startIconCheckable="false"
         app:startIconDrawable="@drawable/baseline_add_location_24"
@@ -89,7 +89,7 @@
             android:textDirection="anyRtl"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:dropDownBackgroundTint="@color/dark_gray" />
+            app:dropDownBackgroundTint="@color/floral_white" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -129,12 +129,12 @@
             android:textDirection="anyRtl"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:dropDownBackgroundTint="@color/dark_gray" />
+            app:dropDownBackgroundTint="@color/_light_green" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayeroutSource"
+        android:id="@+id/textInputLayeroutSchSource"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -172,7 +172,7 @@
             android:textDirection="anyRtl"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:dropDownBackgroundTint="@color/dark_gray" />
+            app:dropDownBackgroundTint="@color/floral_white" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -191,9 +191,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayeroutDestination"
         app:startIconCheckable="false"
-        app:startIconDrawable="@drawable/baseline_add_location_24"
+        app:startIconDrawable="@drawable/baseline_card_travel_24"
         app:startIconScaleType="centerInside"
-        app:startIconTint="@android:color/holo_red_light"
+        app:startIconTint="@color/blue"
         app:startIconTintMode="src_in">>
 
         <AutoCompleteTextView
@@ -213,7 +213,7 @@
             android:textDirection="anyRtl"
             android:textSize="15sp"
             android:textStyle="bold"
-            app:dropDownBackgroundTint="@color/dark_gray" />
+            app:dropDownBackgroundTint="@color/_light_green" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -225,8 +225,8 @@
         android:drawableLeft="@drawable/baseline_ads_click_24"
 
         android:paddingRight="55dp"
-        android:text="Proceed"
-        android:textColor="#CDDC39"
+        android:text="PROCEED"
+        android:textColor="@color/lavender_blush"
         android:textSize="20sp"
         app:cornerRadius="10dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -154,7 +154,7 @@ public class bookingFragment extends Fragment {
                 HomeFragment destFragment = new HomeFragment();
                 FragmentManager fgm = getFragmentManager();
                 fgm.beginTransaction()
-                        .replace(R.id.main, destFragment)
+                        .replace(R.id.frame_layout, destFragment)
                         .commitAllowingStateLoss();
             }
         });
@@ -194,7 +194,7 @@ public class bookingFragment extends Fragment {
                     resetAutoCompleteTextViews();
                     FragmentManager fgm = getFragmentManager();
                     fgm.beginTransaction()
-                            .replace(R.id.main, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                            .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
                             .addToBackStack(null) // Optional: Add the transaction to the back stack
                             .commitAllowingStateLoss();
                 }

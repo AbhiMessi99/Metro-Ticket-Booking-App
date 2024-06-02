@@ -187,7 +187,7 @@ public class myProfileFragment extends Fragment {
                     changePasswordFragment destFragment = new changePasswordFragment();
                     FragmentManager fgm = getFragmentManager();
                     fgm.beginTransaction()
-                            .replace(R.id.profileLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                            .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
                             // Optional: Add the transaction to the back stack
                             .commitAllowingStateLoss();
                     cardView.setVisibility(View.GONE);

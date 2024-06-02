@@ -378,7 +378,7 @@
             android:layout_height="28dp"
             android:layout_marginStart="40dp"
             android:layout_marginBottom="192dp"
-            android:backgroundTint="@color/beige"
+            android:background="@color/antique_white"
             android:src="@drawable/deleteaccount"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"

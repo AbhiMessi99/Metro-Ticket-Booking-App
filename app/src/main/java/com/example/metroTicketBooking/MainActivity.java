@@ -83,7 +83,6 @@ public class MainActivity extends BaseActivity {
                 .requestEmail()
                 .build();
         gsc = GoogleSignIn.getClient(this,gso);
-        Intent intend = getIntent();
         acc = GoogleSignIn.getLastSignedInAccount(this);
         HashMap<String, String> userDetail= sessionManager.getUserDetail();
         currUser = userDetail.get(sessionManager.KEY_USER);

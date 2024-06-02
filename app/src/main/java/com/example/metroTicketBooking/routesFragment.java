@@ -100,7 +100,7 @@ public class routesFragment extends Fragment {
                 HomeFragment destFragment = new HomeFragment();
                 FragmentManager fgm = getFragmentManager();
                 fgm.beginTransaction()
-                        .replace(R.id.frameLayoutRoute, destFragment)
+                        .replace(R.id.frame_layout, destFragment)
                         .commitAllowingStateLoss();
             }
         });

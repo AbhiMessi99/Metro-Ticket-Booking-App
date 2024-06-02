@@ -251,7 +251,7 @@
 
         android:paddingRight="55dp"
         android:text="BOOK"
-        android:textColor="#CDDC39"
+        android:textColor="@color/lavender_blush"
         android:textSize="34sp"
         android:textStyle="bold"
         app:cornerRadius="10dp"

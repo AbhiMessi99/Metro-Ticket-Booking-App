@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
 
     ImageView routes;
     String currUser;
-
+    ImageView schedules;
     private ArrayList<String> dataList;
     private DatabaseReference databaseReference;
     public HomeFragment() {
@@ -88,6 +89,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         sessionManager = new SessionManager(getContext());
+        schedules = view.findViewById(R.id.imageViewScheduledTrains);
         HashMap<String, String> userDetail= sessionManager.getUserDetail();
         currUser = userDetail.get(sessionManager.KEY_USER);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("MetroUsers").child(currUser).child("Tickets");
@@ -99,13 +101,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Calendar calendar = Calendar.getInstance();
                 int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
-                if (currentHour >= 6 && currentHour < 21) {
+                if (currentHour >= 5 && currentHour < 21) {
                     bookingFragment destFragment = new bookingFragment();
 
                     // Replace the current fragment with Fragment2
                     FragmentManager fgm = getFragmentManager();
                     fgm.beginTransaction()
-                            .replace(R.id.choiceLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                            .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
                             .addToBackStack(null) // Optional: Add the transaction to the back stack
                             .commitAllowingStateLoss();
                 }else{
@@ -120,12 +122,24 @@ public class HomeFragment extends Fragment {
                 routesFragment destFragment = new routesFragment();
                 FragmentManager fgm = getFragmentManager();
                 fgm.beginTransaction()
-                        .replace(R.id.choiceLayout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                        .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
                         .addToBackStack(null) // Optional: Add the transaction to the back stack
                         .commitAllowingStateLoss();
             }
         });
 
+        schedules.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scheduleFragment destFragment = new scheduleFragment();
+                FragmentManager fgm = getFragmentManager();
+                fgm.beginTransaction()
+                        .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                        .addToBackStack(null) // Optional: Add the transaction to the back stack
+                        .commitAllowingStateLoss();
+
+            }
+        });
 
         bookings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +151,7 @@ public class HomeFragment extends Fragment {
                             showBookingFragment destFragment = new showBookingFragment();
                             FragmentManager fgm = getFragmentManager();
                             fgm.beginTransaction()
-                                    .replace(R.id.choiceLayout, destFragment)
+                                    .replace(R.id.frame_layout, destFragment)
                                     .addToBackStack(null)
                                     .commitAllowingStateLoss();
                         } else {
@@ -152,7 +166,33 @@ public class HomeFragment extends Fragment {
                 });
             }
         });
-
         return view;
+    }
+    public void onPause() {
+        super.onPause();
+        // Perform any necessary operations here
+        // For example, releasing resources, pausing tasks, etc.
+        Log.d("OldFragment", "onPause called");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Additional cleanup operations if needed
+        Log.d("OldFragment", "onStop called");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        // Cleanup view-related resources
+        Log.d("OldFragment", "onDestroyView called");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        // Final cleanup operations
+        Log.d("OldFragment", "onDestroy called");
     }
 }

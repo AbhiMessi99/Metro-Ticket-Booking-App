@@ -107,7 +107,7 @@ public class changePasswordFragment extends Fragment {
                                     FragmentManager fgm = getFragmentManager();
                                     sessionManager.updatePassword(newPass);
                                     fgm.beginTransaction()
-                                            .replace(R.id.linearLayout9, destFragment) // Replace fragment_container with the ID of the container in your activity layout
+                                            .replace(R.id.frame_layout, destFragment) // Replace fragment_container with the ID of the container in your activity layout
                                             .addToBackStack(null) // Optional: Add the transaction to the back stack
                                             .commitAllowingStateLoss();
                                 } else {

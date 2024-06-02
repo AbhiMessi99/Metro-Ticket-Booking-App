@@ -126,7 +126,7 @@ public class reviewFragment extends Fragment{
                 bookingFragment destFragment = new bookingFragment();
                 FragmentManager fgm = getFragmentManager();
                 fgm.beginTransaction()
-                        .replace(R.id.reviewLayout, destFragment)
+                        .replace(R.id.frame_layout, destFragment)
                         .commitAllowingStateLoss();
                 cardView.setVisibility(View.GONE);
             }
@@ -148,11 +148,11 @@ public class reviewFragment extends Fragment{
     {
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_GaxlJ9Hue5xPUo");
-        checkout.setImage(R.drawable.ic_launcher_background);
+        checkout.setImage(R.drawable.logo);
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", "JACKY");
+            options.put("name", "Kolkata Metro Rail Corporation");
             options.put("description", "Reference No. #123456");
             options.put("image", "http://example.com/image/rzp.jpg");
             //options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
