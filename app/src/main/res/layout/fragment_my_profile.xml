@@ -380,7 +380,7 @@
             android:layout_marginBottom="192dp"
             android:background="@color/antique_white"
             android:src="@drawable/deleteaccount"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.578"

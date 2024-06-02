@@ -122,6 +122,25 @@ public class DBhelperClass extends SQLiteOpenHelper {
         return email;
     }
 
+    public String getUsername(String mobemail) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String username = "";
+
+        Cursor cursor = db.query(Table_Name, new String[]{COL_Username}, COL_Mobile + " =? OR " + COL_Email + " =?",
+                new String[]{mobemail, mobemail}, null, null, null, null);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                username = cursor.getString(cursor.getColumnIndex(COL_Username));
+            }
+            cursor.close();
+        }
+
+        db.close();
+        return username;
+    }
+
+
     public HashMap<String, String> getUserDetails(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         HashMap<String, String> userDetails = new HashMap<>();

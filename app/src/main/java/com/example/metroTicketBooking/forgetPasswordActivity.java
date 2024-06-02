@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -21,6 +22,7 @@ public class forgetPasswordActivity extends AppCompatActivity {
     EditText mobEmail;
     EditText newPassword, reNewPassword;
     ImageView back;
+    TextView knowUsername;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class forgetPasswordActivity extends AppCompatActivity {
         validate = findViewById(R.id.ValidateButton);
         back = findViewById(R.id.imageViewBacktoLogin);
         changePassword = findViewById(R.id.buttonUpdatePassword);
+        knowUsername = findViewById(R.id.textViewKnowUsername);
         DB = new DBhelperClass(this);
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +48,23 @@ public class forgetPasswordActivity extends AppCompatActivity {
                     changePassword.setVisibility(view.VISIBLE);
                 }else{
                     Toast.makeText(getApplicationContext(), "No user registered with above email or mobile number", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        knowUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String credential = mobEmail.getText().toString();
+                String username;
+                if(credential.isEmpty()){
+                    Toast.makeText(forgetPasswordActivity.this, "Provide Phone number or Email", Toast.LENGTH_SHORT).show();
+                }else{
+                    username = DB.getUsername(credential);
+                    if(username.isEmpty()){
+                        Toast.makeText(forgetPasswordActivity.this, "User not found", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(forgetPasswordActivity.this, "Your Username: "+username, Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
