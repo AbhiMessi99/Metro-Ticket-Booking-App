@@ -199,7 +199,7 @@ public class scheduleFragment extends Fragment {
         int departureHour = departureTime.get(Calendar.HOUR_OF_DAY);
 
         // Ensure departure time is between 6 AM (06:00) and 9 PM (21:00)
-        //if (departureHour >= 6 && departureHour <= 21) {
+        if (departureHour >= 6 && departureHour <= 21) {
             String formattedDepartureTime = new SimpleDateFormat("HH:mm", Locale.getDefault()).format(departureTime.getTime());
 
             // Assuming destination time is 1 hour after departure
@@ -217,7 +217,7 @@ public class scheduleFragment extends Fragment {
             String interStation = "Stoppages: "+stationbtw;
             String duration = "Duration: "+timeDifference;
             trainScheduleList.add(new TrainSchedule(source, destination, EDT, EAT, duration, interStation));
-        //}
+        }
     }
     public static int sumRandomElements(int[] arr, int count) {
         Random random = new Random();
