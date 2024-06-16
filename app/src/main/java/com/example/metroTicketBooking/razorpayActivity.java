@@ -33,25 +33,25 @@ import java.util.Locale;
 public class razorpayActivity extends BaseActivity implements PaymentResultListener {
 
     private Handler handler = new Handler();
-    String To, From, type, cost;
-    TextView journeyType;
-    TextView money;
-    TextView source;
-    TextView destination;
-    TextView route;
-    TextView currentTimeTextView;
-    TextView passenger;
-    int tripFare;
-    ImageView razorpay;
-    ImageView home;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    private String To, From, type, cost;
+    private TextView journeyType, money, source, destination, route, currentTimeTextView, passenger;
+    private int tripFare;
+    private ImageView razorpay, home;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
+    private SessionManager sessionManager; // Assuming this is your session manager class
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_razorpay);
         Checkout.preload(getApplicationContext());
+
+        // Initialize session manager
+        sessionManager = new SessionManager(this);
+
+        // Initialize UI components
         journeyType = findViewById(R.id.textViewJType);
         source = findViewById(R.id.textViewSource);
         destination = findViewById(R.id.textViewDestination);
@@ -59,13 +59,11 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
         route = findViewById(R.id.textViewRoute);
         currentTimeTextView = findViewById(R.id.textViewTimeOftravel);
         passenger = findViewById(R.id.textViewPassenger);
-        money = findViewById(R.id.textViewMoney);
         razorpay = findViewById(R.id.imageViewRazorpay);
         home = findViewById(R.id.imageViewRazHome);
 
         Intent intent = getIntent();
-
-        money.setText("₹ "+intent.getStringExtra("money"));
+        money.setText("₹ " + intent.getStringExtra("money"));
         journeyType.setText(intent.getStringExtra("journeyType"));
         source.setText(intent.getStringExtra("source"));
         destination.setText(intent.getStringExtra("destination"));
@@ -76,6 +74,7 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
         From = intent.getStringExtra("source");
         cost = intent.getStringExtra("money");
         type = intent.getStringExtra("journeyType");
+
         updateTime();
 
         razorpay.setOnClickListener(new View.OnClickListener() {
@@ -93,48 +92,48 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
                 startActivity(intent);
             }
         });
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
     }
+
     private void updateTime() {
-        // Create a new thread to update the time continuously
         handler.post(new Runnable() {
             @Override
             public void run() {
-                // Get the current time
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
                 String currentTime = sdf.format(new Date());
 
-                // Set the current time to the TextView
                 if (currentTimeTextView != null) {
                     currentTimeTextView.setText(currentTime);
                 }
 
-                // Call this method again after 1 second (1000 milliseconds)
                 handler.postDelayed(this, 1000);
             }
         });
     }
+
     private void makepayment(int tripFare) {
         Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_GaxlJ9Hue5xPUo");
+        checkout.setKeyID("rzp_test_GaxlJ9Hue5xPUo"); // Move to a secure place in production
         checkout.setImage(R.drawable.logo);
         final Activity activity = this;
+
         try {
             JSONObject options = new JSONObject();
-
             options.put("name", "To Kolkata Metro Railway Cop.");
             options.put("description", "Reference No. #123456");
             options.put("image", "http://example.com/image/rzp.jpg");
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
-            options.put("amount", tripFare*100);//pass amount in currency subunits
+            options.put("amount", tripFare * 100); // pass amount in currency subunits
             options.put("prefill.email", "gaurav.kumar@example.com");
             options.put("prefill.contact", "8789629431");
             options.put("method", "upi");
+
             JSONObject retryObj = new JSONObject();
             retryObj.put("enabled", true);
             retryObj.put("max_count", 4);
@@ -149,9 +148,9 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
 
     @Override
     public void onPaymentSuccess(String s) {
-        HashMap<String, String> userDetail= sessionManager.getUserDetail();
+        HashMap<String, String> userDetail = sessionManager.getUserDetail();
         String username = userDetail.get(sessionManager.KEY_USER);
-        // Create a new payment detail map
+
         PaymentDetails paymentDetails = new PaymentDetails(
                 username,
                 s,
@@ -159,10 +158,11 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
                 System.currentTimeMillis()
         );
 
-        TicketDetails details = new TicketDetails(From, To, cost, type,System.currentTimeMillis());
+        TicketDetails details = new TicketDetails(From, To, cost, type, System.currentTimeMillis());
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("MetroUsers");
+
         databaseReference.child(username).child("payments").push().setValue(paymentDetails).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -174,6 +174,7 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
                 startActivity(intent);
             }
         });
+
         databaseReference.child(username).child("Tickets").push().setValue(details).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -181,8 +182,10 @@ public class razorpayActivity extends BaseActivity implements PaymentResultListe
             }
         });
     }
+
     @Override
     public void onPaymentError(int i, String s) {
-
+        Log.e("Payment Error", s);
+        Toast.makeText(getApplicationContext(), "Payment failed: " + s, Toast.LENGTH_LONG).show();
     }
 }

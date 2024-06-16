@@ -136,6 +136,9 @@ public class MainActivity extends BaseActivity {
             } else if (menuItem.getItemId() == R.id.nav_MyProfile) {
                 myProfileFragment destFragment = new myProfileFragment();
                 replaceFragment(destFragment);
+            } else if(menuItem.getItemId() == R.id.nav_about){
+                AboutUsFragment destFragment = new AboutUsFragment();
+                replaceFragment(destFragment);
             }
             menuItem.setChecked(true);
             drawerLayout.closeDrawers();
@@ -169,12 +172,10 @@ public class MainActivity extends BaseActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         if (!fragmentManager.isStateSaved()) {
             fragmentTransaction.replace(R.id.frame_layout, fragment);
-            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         } else {
             // If the state is already saved, use commitAllowingStateLoss() as a last resort
             fragmentTransaction.replace(R.id.frame_layout, fragment);
-            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commitAllowingStateLoss();
         }
     }

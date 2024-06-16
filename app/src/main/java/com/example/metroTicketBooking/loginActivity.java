@@ -33,7 +33,6 @@ public class loginActivity extends AppCompatActivity {
     TextView forget;
     Button btn;
     private SessionManager sessionManager;
-
     GoogleSignInClient gsc;
 
     ImageView googleimage;

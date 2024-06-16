@@ -18,7 +18,7 @@ import com.google.android.gms.tasks.Task;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-    private static final long TIMEOUT = 600000; // 10 seconds in milliseconds
+    private static final long TIMEOUT = 600000; // 10 seconds in milliseconds = 10000
     private Handler handler = new Handler();
     private Runnable runnable;
     SessionManager sessionManager;

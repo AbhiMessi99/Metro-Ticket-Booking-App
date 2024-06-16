@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/appbackground"
+    android:backgroundTint="@color/alice_blue"
+    android:backgroundTintMode="multiply"
+    tools:context=".AboutUsFragment">
+
+    <ImageView
+        android:id="@+id/imageViewAboutBack"
+        android:layout_width="24dp"
+        android:layout_height="29dp"
+        android:src="@drawable/back"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout15"
+        app:layout_constraintEnd_toStartOf="@+id/imageView21"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="202dp"
+        android:layout_height="115dp"
+        android:src="@drawable/man"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout15"
+        android:layout_width="409dp"
+        android:layout_height="597dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView21">
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Our Mission"
+            android:textAlignment="center"
+            android:textColor="#388E3C"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="Our mission is simple: to provide you with hassle-free metro ticket booking and real-time updates, while promoting sustainable and eco-friendly transportation options. We believe that by making public transportation more accessible and convenient, we can contribute to building smarter, greener cities for future generations."
+            android:textAlignment="center"
+            android:textColor="@color/blue_violet"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Welcome to Metro Booking!"
+            android:textAlignment="center"
+            android:textColor="#388E3C"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="At Metro Booking, we're dedicated to revolutionizing the way you travel. Our app is designed to make your metro journey seamless, convenient, and stress-free. Whether you're a daily commuter or an occasional traveler, we're here to enhance your experience every step of the way."
+            android:textAlignment="center"
+            android:textColor="@color/blue_violet"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Meet Our Team"
+            android:textAlignment="center"
+            android:textColor="#388E3C"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="Behind the scenes, our team of experienced developers, designers, and transportation enthusiasts are working tirelessly to bring you the best possible experience. With a passion for innovation and a commitment to excellence, we're dedicated to delivering a user-friendly app that meets your needs. Our team Comprises Abhimanyu, Diya and Jacky "
+            android:textAlignment="center"
+            android:textColor="@color/blue_violet"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Our Vision"
+            android:textAlignment="center"
+            android:textColor="#388E3C"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:text="As we continue to grow and evolve, our vision for Metro Booking is to become the go-to platform for metro travelers worldwide. We're committed to continuously improving our app, adding new features, and exploring innovative solutions to make your journey even better."
+            android:textAlignment="center"
+            android:textColor="@color/blue_violet"
+            android:textDirection="firstStrong"
+            android:textSize="14sp"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/timeOfBooking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="start"
+            android:fontFamily="@font/alatsi"
+            android:text="Thank You"
+            android:textAlignment="center"
+            android:textColor="@color/indian_red"
+            android:textDirection="firstStrong"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

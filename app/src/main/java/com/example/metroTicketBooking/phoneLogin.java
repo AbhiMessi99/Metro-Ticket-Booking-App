@@ -36,18 +36,16 @@ public class phoneLogin extends AppCompatActivity {
     private static final String TAG = "phoneLogin";
     private String verificationCode;
     private PhoneAuthProvider.ForceResendingToken resendingToken;
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
     private EditText otpInput;
     private Button signInBtn;
     private TextView resendOtpTextView;
     private String phoneNumber;
     private long timeOut = 60L;
-    private FirebaseAuth mAuth;
-    ProgressBar progressBar;
-    Intent intent;
-    String user, pass, emailid, num, gender, dob;
-    DBhelperClass DB;
+    private ProgressBar progressBar;
+    private DBhelperClass DB;
+    private Intent intent;
+    private String user, pass, emailid, num, gender, dob;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,16 +57,18 @@ public class phoneLogin extends AppCompatActivity {
         resendOtpTextView = findViewById(R.id.textViewReSendOtp);
         signInBtn = findViewById(R.id.verifyButton);
         otpInput = findViewById(R.id.editTextOtp);
-        intent = getIntent();
         progressBar = findViewById(R.id.progressBarOtp);
+
+        intent = getIntent();
         phoneNumber = intent.getStringExtra("number");
-        sendOtp(phoneNumber, false);
         user = intent.getStringExtra("username");
         pass = intent.getStringExtra("password");
         emailid = intent.getStringExtra("emailid");
         num = intent.getStringExtra("number");
         gender = intent.getStringExtra("gender");
         dob = intent.getStringExtra("dob");
+
+        sendOtp(phoneNumber, false);
 
         resendOtpTextView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,11 +129,11 @@ public class phoneLogin extends AppCompatActivity {
                     }
                 });
 
-        if (isResend) {
+        if (isResend && resendingToken != null) {
             builder.setForceResendingToken(resendingToken);
         }
 
-        mAuth.useAppLanguage();  // Set to device's default language
+        mAuth.useAppLanguage();
         PhoneAuthProvider.verifyPhoneNumber(builder.build());
     }
 
@@ -160,16 +160,17 @@ public class phoneLogin extends AppCompatActivity {
         });
     }
 
-    void setInProgress(boolean inProgress){
-        if(inProgress){
+    private void setInProgress(boolean inProgress) {
+        if (inProgress) {
             progressBar.setVisibility(View.VISIBLE);
             signInBtn.setEnabled(false);
-        }else{
+        } else {
             progressBar.setVisibility(View.GONE);
             signInBtn.setEnabled(true);
         }
     }
-    void startResendTimer() {
+
+    private void startResendTimer() {
         resendOtpTextView.setEnabled(false);
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {

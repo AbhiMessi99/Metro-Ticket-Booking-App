@@ -2,6 +2,8 @@ package com.example.metroTicketBooking;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,12 +17,16 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.regex.Pattern;
+
 public class forgetPasswordActivity extends AppCompatActivity {
 
+    public static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
     Button validate, changePassword;
     DBhelperClass DB;
     EditText mobEmail;
     EditText newPassword, reNewPassword;
+    public static final Pattern pwPattern = Pattern.compile(PASSWORD_PATTERN);
     ImageView back;
     TextView knowUsername;
     @Override
@@ -37,6 +43,31 @@ public class forgetPasswordActivity extends AppCompatActivity {
         changePassword = findViewById(R.id.buttonUpdatePassword);
         knowUsername = findViewById(R.id.textViewKnowUsername);
         DB = new DBhelperClass(this);
+
+        newPassword.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(pwPattern.matcher(newPassword.getText().toString()).matches()==false){
+                    newPassword.setError("1. Must contain one uppercase and lowercase letter\n" +
+                            "2. At least one digit.\n" +
+                            "3. At least one special character.\n" +
+                            "4. At least 8 characters.\n");
+                    changePassword.setEnabled(false);
+                } else{
+                    changePassword.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
         validate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

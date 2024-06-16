@@ -35,8 +35,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     public static final String USERNAME_PATTERN = "^[a-zA-Z0-9]([@#._](?![@#_.-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$";
     public static final String PHONE_PATTERN = "^[0-9]{10}$";
+    public static final String PASSWORD_PATTERN = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+
     public static final Pattern pattern = Pattern.compile(USERNAME_PATTERN);
     public static final Pattern phonePattern = Pattern.compile(PHONE_PATTERN);
+    public static final Pattern pwPattern = Pattern.compile(PASSWORD_PATTERN);
+
     EditText uid;
     EditText pw, pw2;
     EditText email;
@@ -99,6 +103,30 @@ public class RegisterActivity extends AppCompatActivity {
                             "3. Special characters must not be the first or last character.\n" +
                             "4. Special characters must not appear consecutively,\n" +
                             "5. The number of characters must be between 5 to 20.");
+                    btn.setEnabled(false);
+                } else{
+                    btn.setEnabled(true);
+                }
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        pw.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(pwPattern.matcher(pw.getText().toString()).matches()==false){
+                    pw.setError("1. Must contain one uppercase and lowercase letter\n" +
+                            "2. At least one digit.\n" +
+                            "3. At least one special character.\n" +
+                            "4. At least 8 characters.\n");
                     btn.setEnabled(false);
                 } else{
                     btn.setEnabled(true);
